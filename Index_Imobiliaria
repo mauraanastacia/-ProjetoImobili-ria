@@ -1,0 +1,91 @@
+<apex:page controller="ImobiliariaController">  <!-- Usar uma controller  personalizada -->
+    
+    <!-- Definições de estilo CSS -->
+    
+    <style> 
+        #conteudo{
+        margin-top:10%;  
+        margin-left:10%;
+        margin-right:10;  
+        }
+        #form1{
+        width:300px;
+        }
+        
+    </style>
+    
+    <!-- Inicio de conteúdo -->
+    <apex:slds />    <!-- chamada para o slds -->
+    <div id="conteudo">
+        <center>
+            
+            <div id="form1" class="slds">
+                <article class="slds-card">
+                    <div class="slds-card__header"> <!--Cabeçalho -->
+                        <h2 class="slds-card__header-title">
+                            <span><b>CADASTRO DE IMÓVEIS</b></span>
+                        </h2> 
+                    </div>
+                    <div class="slds-card__body slds-card__bodyinner slds-form-element__control"> <!--conteudo do artigo -->
+                       <apex:form >
+                        <!-- Mensagem da tela -->
+                        <apex:pageMessages id="showmessage"></apex:pageMessages>
+                   
+                          <table class="slds-table slds-table_bordered"> <!-- criar a tabela-->
+                           <thead>  <!-- cabeçalho -->
+                              <tr>
+                               <th scope="col">  <!-- coluna -->
+                                   <div class="slds-truncate" title="Itens"> ITENS </div> 
+                                  </th>
+                                  <th scope="col">
+                                  <div class="slds-truncate" title="Itens"> QUANTIDADE </div>
+                                  </th>
+                                  
+                               </tr>
+                              </thead> 
+                              
+                              <tbody> <!-- fazer as linhas, colunas, células do corpo -->
+                              <tr>
+                                  <th data-label="Quartos" scope="row">
+                                  <div class="slds-truncate" title="Quartos">
+                                     <label class="slds-form-element__label">  Quartos:   </label> 
+                                      </div>
+                                      </th>
+                                  <td data-label="Quartos">
+                                  <div class="slds-truncate" title="Quartos">
+                                    <apex:inputText value="{!quartos}"/>       
+                                     </div> 
+                                  </td>
+                                  
+                                  
+                                  </tr>
+                              </tbody>
+                              
+                           </table>
+                           
+                            Quartos:<apex:inputText value="{!quartos}"/>     
+                            Banheiros: <apex:inputText value="{!banheiros}"/>
+                            Copa: <apex:inputText value="{! copa}"/> 
+                            Sala:<apex:inputText value="{!sala}" />
+                            Cozinha:<apex:inputText value="{!cozinha}"/>
+                            Suíte:<apex:inputText value="{!suite}" />
+                            Garagem:<apex:inputText value="{!garagem}"/>
+                            Valor:<apex:inputText value="{!valor}"/>
+                            
+                            <!-- Campo picklist -->
+                            Tipo do Imóvel:
+                            <apex:selectList value="{!tipoImovel}" multiselect="false" size="1" required="true">
+                                
+                            <!--chamada para o metodo que preenche as opções sem utilizar o get do metodo da controller -->
+                            <apex:selectOptions value="{!MinhasOpcoes}" />  
+                            </apex:selectList>
+                
+                        <br/>
+                        <apex:commandButton value="SALVAR" action="{!salvarImoveis}" styleClass="slds-button slds-button_success"/>
+                    </apex:form>   
+                    </div>
+                </article>
+            </div>
+        </center>
+    </div>
+</apex:page>
